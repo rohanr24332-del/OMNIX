@@ -1,6 +1,6 @@
 # OMNIX
 
-OMNIX is a modular, local-first AI assistant for Android built using Jetpack Compose. It is designed around a multi-agent architecture where specialized AI components collaborate to produce high-quality responses while maintaining a privacy-focused, on-device execution model.
+OMNIX is a modular, local-first AI assistant for Android built using Jetpack Compose. The project follows a layered architecture that separates user interface, runtime management, inference, model management, and AI reasoning into independent modules. It is designed to support multiple on-device AI runtimes while maintaining an offline-first and privacy-focused execution model.
 
 The project is currently under active development.
 
@@ -8,45 +8,84 @@ The project is currently under active development.
 
 ## Overview
 
-The long-term objective of OMNIX is to provide an extensible AI platform capable of:
+OMNIX is being developed as an extensible platform for on-device artificial intelligence. The architecture is designed to support:
 
 - Multi-agent reasoning
 - Local AI model execution
+- Runtime provider abstraction
 - Intelligent model management
 - Long-term conversation memory
 - Vision and document understanding
-- Autonomous task execution
-- Offline-first operation
+- Offline-first execution
+- Future plugin extensibility
 
-The architecture is intentionally modular, allowing new capabilities to be integrated without major changes to the existing codebase.
+The modular architecture allows new capabilities to be integrated with minimal impact on existing components.
 
 ---
 
 ## Current Status
 
-Current development milestone:
+**Current Development Phase:** Phase 6 – Runtime Architecture
 
-**Phase 5 – Inference Engine (Current)**
+### Completed
 
-### Implemented
-
-- Multi-module Android architecture
-- Material 3 UI with Material You support
+- Modular Android architecture
+- Material 3 user interface
 - Home dashboard
 - Chat interface
 - AI Council framework
 - Model Manager
-- Device hardware profiling
-- Inference Engine
-- Provider-based AI architecture
-- AI model runtime abstraction
+- Device capability profiling
+- Provider-based inference engine
+- Runtime architecture
+- Runtime controller
+- Runtime lifecycle management
+- Runtime state management
+- Runtime event system
+- Runtime metrics
+- Session management
+- Model loading infrastructure
 - Streaming inference pipeline
-- Prompt formatting system
+- Prompt formatting
 - Conversation context management
-- Room persistence layer
-- Repository architecture
+- Room persistence
 - Hilt dependency injection
-- Navigation between feature modules
+- Navigation architecture
+
+---
+
+## Architecture
+
+```
+Jetpack Compose UI
+        │
+        ▼
+Feature Modules
+(Home, Chat, Council, Model Manager)
+        │
+        ▼
+Inference Engine
+        │
+        ▼
+Runtime Controller
+        │
+        ▼
+Runtime Provider
+        │
+ ┌──────────────┬──────────────┬──────────────┬──────────────┐
+ │              │              │              │
+Llama.cpp   MediaPipe LLM    Ollama     Simulated Runtime
+```
+
+Supporting components:
+
+- AI Council
+- Runtime Manager
+- Runtime Metrics
+- Runtime Events
+- Session Manager
+- Room Database
+- DataStore
 
 ---
 
@@ -63,39 +102,61 @@ feature-home/
 feature-modelmanager/
 ```
 
-### Modules
+---
+
+## Modules
 
 | Module | Description |
 |---------|-------------|
-| `app` | Application entry point, navigation and dependency injection |
+| `app` | Application entry point and navigation |
 | `core-model` | Shared domain models |
-| `core-data` | Repository layer, Room database, DataStore, inference engine, model management and AI interfaces |
-| `core-ui` | Shared UI components, theme and design system |
+| `core-data` | Repository layer, runtime, inference engine, Room database, DataStore and dependency injection |
+| `core-ui` | Shared UI components and Material 3 design system |
 | `feature-home` | Home dashboard |
-| `feature-chat` | Chat interface |
-| `feature-council` | Multi-agent AI Council |
-| `feature-modelmanager` | AI model management, hardware profiling and model selection |
+| `feature-chat` | Chat experience |
+| `feature-council` | Multi-agent reasoning framework |
+| `feature-modelmanager` | Device profiling and model management |
 
 ---
 
-## Current Features
+## Features
+
+### AI
 
 - Multi-agent AI Council
-- Provider-based Inference Engine
-- AI model runtime abstraction
-- Streaming response architecture
-- Conversation context management
+- Provider-based inference engine
+- Runtime controller
+- Runtime lifecycle management
+- Runtime event system
+- Runtime metrics
+- Runtime session management
+- Streaming response pipeline
 - Prompt formatting
-- Model Manager
+- Conversation context management
+
+### Runtime
+
+- Runtime manager
+- Runtime provider abstraction
+- Model loading infrastructure
+- Simulated runtime implementation
+
+### Model Management
+
 - Device capability detection
-- AI model recommendation
-- Simulated model installation workflow
-- Material You interface
-- Dark mode support
+- Hardware profiling
+- Model recommendation engine
+- Model installation workflow
+
+### Platform
+
+- Jetpack Compose
+- Material 3
+- Material You support
 - Room persistence
+- DataStore
+- Hilt dependency injection
 - Modular architecture
-- Jetpack Compose UI
-- Dependency injection with Hilt
 
 ---
 
@@ -121,7 +182,7 @@ feature-modelmanager/
 
 ### Phase 2
 - Chat experience
-- Persistence improvements
+- Persistence layer
 
 ### Phase 3
 - AI Council
@@ -130,27 +191,30 @@ feature-modelmanager/
 
 ### Phase 4
 - Model Manager
-- Device hardware detection
-- AI model management
+- Device profiling
 - Model recommendation engine
 
-### Phase 5 (Current)
-- Inference Engine
-- Provider architecture
-- AI model runtime abstraction
-- Streaming pipeline
+### Phase 5
+- Provider-based inference engine
+- Runtime abstraction
+- Streaming inference
 - Prompt formatting
-- Context management
 
 ### Phase 6
-- Local runtime architecture
-- Local model loading
-- Runtime management
-- Performance metrics
+- Runtime architecture
+- Runtime controller
+- Runtime lifecycle
+- Runtime metrics
+- Runtime event system
+- Session management
+- Model loading infrastructure
 
 ### Phase 7
-- Real local LLM integration
-- Adaptive reasoning
+- Local LLM integration
+- Runtime provider selection
+- llama.cpp integration
+- MediaPipe LLM integration
+- Ollama development runtime
 - AI Council runtime integration
 
 ### Phase 8
@@ -169,16 +233,14 @@ feature-modelmanager/
 
 ## Development
 
-Clone the repository:
-
 ```bash
 git clone https://github.com/rohanr-10/OMNIX.git
 ```
 
-Open the project in Android Studio and allow Gradle to synchronize dependencies.
+Open the project in Android Studio and synchronize the Gradle configuration.
 
 ---
 
 ## License
 
-This project is currently under active development. A license will be added prior to the first stable release.
+This project is currently under active development. A license will be added before the first stable release.
